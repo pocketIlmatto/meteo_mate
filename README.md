@@ -83,25 +83,25 @@ Example of MM response to a spot forecast query.  Spot forecasts for a single po
   },
   “model”: ‘HRRR’,
   “max_altitude”: 18000,
-    “data”: [{
+  “data”: {
       “dt”: 1560384000,
-    "nebulosity": 2.0,
+      "nebulosity": 2.0,
       “humidity”: 72.96,
-    "p_rate": 0.001,
-    "p_amount": 0.01,
+      "p_rate": 0.001,
+      "p_amount": 0.01,
       “pressure”: 1013.99,
-    "cloudbase": 3030,
+      "cloudbase": 3030,
       “levels”: [
-      {
-        "altitude": 2000,
-        "dew_point": 290.01,
-            "pressure": 942.13,
-        “temperature”: 289.42,
-            “wind_speed”: 2,
-            “wind_direction”: 270
-      },
-      ...
-      },...]
+        {
+          "altitude": 2000,
+          "dew_point": 290.01,
+          "pressure": 942.13,
+          “temperature”: 289.42,
+          “wind_speed”: 2,
+          “wind_direction”: 270
+        },
+        ...]
+      }
 }
 ```
 
