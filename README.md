@@ -83,7 +83,7 @@ Example of MM response to a spot forecast query.  Spot forecasts for a single po
   },
   “model”: ‘HRRR’,
   “max_altitude”: 18000,
-  “data”: {
+  “data”: [{
       “dt”: 1560384000,
       "nebulosity": 2.0,
       “humidity”: 72.96,
@@ -100,8 +100,7 @@ Example of MM response to a spot forecast query.  Spot forecasts for a single po
           “wind_speed”: 2,
           “wind_direction”: 270
         },
-        ...]
-      }
+   },...]
 }
 ```
 
