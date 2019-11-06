@@ -7,8 +7,12 @@ module MeteoMate
       @config = Config::read_config_file(model)
     end
 
-    def forecast_period
-      @config['forecast_period']
+    def filename_format
+      @config['filename_format']
+    end
+
+    def forecast_interval
+      @config['forecast_interval']
     end
 
     def run_interval
