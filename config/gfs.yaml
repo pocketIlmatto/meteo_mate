@@ -1,0 +1,5 @@
+filename_format: "gfs.t%02dz.pgrb2.0p25.f%03d"
+forecast_interval: 3
+run_interval: 6
+server_url: 'https://ftp.ncep.noaa.gov/data/nccf/com/gfs/prod'
+subdir_format: "gfs.%04d%02d%02d/%02d"
