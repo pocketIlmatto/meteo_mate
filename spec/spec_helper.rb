@@ -1,4 +1,5 @@
 require "bundler/setup"
+require 'faker'
 require "meteo_mate"
 
 RSpec.configure do |config|
