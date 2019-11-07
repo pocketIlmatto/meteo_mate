@@ -10,7 +10,7 @@ module MeteoMate
 
     FORECAST_HOUR_LIMIT = 384
 
-    def initialize(config, time)
+    def initialize(config, time = Time.now.utc)
       @config = config
       @time = time
     end
