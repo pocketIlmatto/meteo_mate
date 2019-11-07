@@ -188,7 +188,7 @@ Require the library where needed (or add to your Gemfile):
 require 'meteo_mate'
 ```
 
-To fetch a spot forecast:
+### To fetch a spot forecast:
 ```ruby
 t = Time.now.utc # MeteoMate expects UTC time
 model = MeteoMate::Model::HRRR
@@ -198,7 +198,7 @@ max_altitude = 5487 # expressed in meters
 forecast = MeteoMate.fetch_spot_forecast(model, time, lat, lon, max_altitude)
 ```
 
-To populate forecast data files into the cache:
+### To populate forecast data files into the cache:
 ```ruby
 t = Time.now.utc # MeteoMate expects UTC time
 model = MeteoMate::Model::HRRR
@@ -228,6 +228,23 @@ RAILS_ENV=<rails environment> bundle exec rake cache:populate['HRRR']
 ```
 
 Finally, edit your crontab to run the job on a schedule that makes sense for that model. It typically wouldn’t make sense to run this job more often than how often the model is run because any subsequent runs will all be cache hits.
+
+### To fetch a Grib2 file directly:
+MeteoMate exposes services that can be called individually as needed.
+
+```ruby
+require 'excon'
+url = "<url>"
+
+directory = '<directory to store the file>'
+filename = '<filename to use>'
+
+index_file = Excon::get("#{url}.idx").body
+ranges = MeteoMate::FetchGrib2Ranges::call(index_file)
+desired_range_keys = [] # Eg. [":PRATE:surface:", ":TMP:2 m above ground:"]
+filtered_ranges = desired_range_keys.map { |k| ranges[k] }
+MeteoMate::FetchGrib2File::call(filtered_ranges, directory, filename, url)
+```
 
 ## Development
 
