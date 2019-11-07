@@ -1,10 +1,14 @@
 require 'yaml'
 module MeteoMate
 
-  class Config
+  class ModelConfig
 
     def initialize(model)
-      @config = Config::read_config_file(model)
+      @config = ModelConfig::read_config_file(model)
+    end
+
+    def cache_directory
+      @config['cache_directory']
     end
 
     def filename_format
@@ -21,6 +25,10 @@ module MeteoMate
 
     def server_url
       @config['server_url']
+    end
+
+    def subdir_format
+      @config['subdir_format']
     end
 
     def self.read_config_file(model)
