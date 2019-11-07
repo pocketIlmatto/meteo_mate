@@ -1,3 +1,4 @@
+require 'meteo_mate/fetch_grib2_file'
 require 'meteo_mate/fetch_grib2_ranges'
 require 'meteo_mate/forecast_model'
 require 'meteo_mate/model_config'
