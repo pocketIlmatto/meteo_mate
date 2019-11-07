@@ -1,3 +1,4 @@
+cache_directory: '../cache/hrrr/'
 filename_format: "gfs.t%02dz.pgrb2.0p25.f%03d"
 forecast_interval: 3
 run_interval: 6
