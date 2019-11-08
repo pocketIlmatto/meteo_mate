@@ -6,6 +6,8 @@ module MeteoMate
   class FetchGrib2File
 
     def self.call(ranges, directory, filename, url)
+      raise "No ranges specified" if ranges.nil? || ranges.empty?
+
       FileUtils.mkpath(directory)
       path = File.join(directory, filename)
 

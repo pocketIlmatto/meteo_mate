@@ -2,11 +2,13 @@ module MeteoMate
 
   class FilterGrib2Ranges
 
-    def self.call(ranges, desired_ranges = [])
-      if desired_ranges.empty?
-        desired_ranges = MeteoMate.configuration.records.values
+    def self.call(ranges, desired_records = [])
+      if desired_records.empty?
+        desired_records = MeteoMate.configuration.records.values
       end
-      desired_ranges.map { |k| ranges[k] }.compact!
+      records = desired_records.map { |k| ranges[k] }
+      records.compact!
+      records
     end
 
   end
