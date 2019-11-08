@@ -4,7 +4,7 @@ module MeteoMate
     attr_accessor :wgrib2_path, :records
 
     def initialize
-      @wgrib2_path = "wgrib"
+      @wgrib2_path = "/usr/local/bin/wgrib2"
       @records = {
         :cloud_cover  => ":TCDC:entire atmosphere:",
         :cloud_base => ":HGT:cloud base:",
