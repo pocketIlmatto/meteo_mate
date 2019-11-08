@@ -1,3 +1,4 @@
+require 'meteo_mate/configuration'
 require 'meteo_mate/fetch_grib2_file'
 require 'meteo_mate/fetch_grib2_ranges'
 require 'meteo_mate/forecast_model'
@@ -5,6 +6,14 @@ require 'meteo_mate/model_config'
 require 'meteo_mate/version'
 
 module MeteoMate
+  class << self
+    attr_accessor :configuration
+  end
+
+  def self.configure
+    self.configuration ||= MeteoMate::Configuration.new
+    yield(configuration)
+  end
 
   def self.model_config(model)
     MeteoMate::ModelConfig.new(model)

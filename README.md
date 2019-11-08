@@ -188,6 +188,25 @@ Require the library where needed (or add to your Gemfile):
 require 'meteo_mate'
 ```
 
+### To configure the gem:
+
+```ruby
+MeteoMate.configure do |config|
+  config.wgrib2_path = "/usr/local/bin/wgrib2"
+  config.records = {
+    :cloud_cover  => ":TCDC:entire atmosphere:",
+    :cloud_base => ":HGT:cloud base:",
+    :humidity    => ":RH:2 m above ground:",
+    :gust => ":GUST:surface:",
+    :precip_rate => ":PRATE:surface:",
+    :pressure    => ":PRES:surface:",
+    :temperature   => ":TMP:2 m above ground:",
+    :ugrd  => ":UGRD:10 m above ground:",
+    :vgrd  => ":VGRD:10 m above ground:"
+  }
+end
+```
+
 ### To fetch a spot forecast:
 ```ruby
 t = Time.now.utc # MeteoMate expects UTC time
