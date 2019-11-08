@@ -253,15 +253,14 @@ MeteoMate exposes services that can be called individually as needed.
 
 ```ruby
 require 'excon'
-url = "<url>"
+url = "<url>" # Change this
+directory = '<directory to store the file>' # Change this
+filename = '<filename to use>' # Change this
 
-directory = '<directory to store the file>'
-filename = '<filename to use>'
-
+MeteoMate::configure {} # Customize the configuration if desired
 index_file = Excon::get("#{url}.idx").body
 ranges = MeteoMate::FetchGrib2Ranges::call(index_file)
-desired_range_keys = [] # Eg. [":PRATE:surface:", ":TMP:2 m above ground:"]
-filtered_ranges = desired_range_keys.map { |k| ranges[k] }
+filtered_ranges = MeteoMate::FilterGrib2Ranges::call(ranges)
 MeteoMate::FetchGrib2File::call(filtered_ranges, directory, filename, url)
 ```
 
