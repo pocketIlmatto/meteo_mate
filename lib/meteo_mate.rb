@@ -1,10 +1,13 @@
-require 'meteo_mate/configuration'
-require 'meteo_mate/fetch_grib2_file'
-require 'meteo_mate/fetch_grib2_ranges'
-require 'meteo_mate/filter_grib2_ranges'
-require 'meteo_mate/forecast_model'
-require 'meteo_mate/model_config'
-require 'meteo_mate/version'
+# require 'meteo_mate/configuration'
+# require 'meteo_mate/fetch_grib2_file'
+# require 'meteo_mate/fetch_grib2_ranges'
+# require 'meteo_mate/filter_grib2_ranges'
+# require 'meteo_mate/forecast_model'
+# require 'meteo_mate/model_config'
+# require 'meteo_mate/'
+# require 'meteo_mate/version'
+
+Dir[File.join(__dir__, 'meteo_mate', '*.rb')].each { |file| require file }
 
 module MeteoMate
   class << self
