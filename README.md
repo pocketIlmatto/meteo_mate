@@ -248,7 +248,7 @@ RAILS_ENV=<rails environment> bundle exec rake cache:populate['HRRR']
 
 Finally, edit your crontab to run the job on a schedule that makes sense for that model. It typically wouldn’t make sense to run this job more often than how often the model is run because any subsequent runs will all be cache hits.
 
-### To fetch a Grib2 file directly:
+### To fetch and read from a Grib2 file directly:
 MeteoMate exposes services that can be called individually as needed.
 
 ```ruby
@@ -256,13 +256,22 @@ require 'excon'
 url = "<url>" # Change this
 directory = '<directory to store the file>' # Change this
 filename = '<filename to use>' # Change this
+lat = 37.810000 # Change this
+lon = -122.000000 # Change this
 
 MeteoMate::configure {} # Customize the configuration if desired
 index_file = Excon::get("#{url}.idx").body
 ranges = MeteoMate::FetchGrib2Ranges::call(index_file)
 filtered_ranges = MeteoMate::FilterGrib2Ranges::call(ranges)
 MeteoMate::FetchGrib2File::call(filtered_ranges, directory, filename, url)
+
+temp = MeteoMate::ReadGrib2File::call(File.join(hrrr.cache_directory, hrrr.filename), :temp, latitude: lat, longitude: lon)
 ```
+
+## References
+- [Diagnostic output fields for RAP/HRRR](https://rapidrefresh.noaa.gov/RAP_var_diagnosis.html)
+- [wgrib2](https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/index.html)
+
 
 ## Development
 
