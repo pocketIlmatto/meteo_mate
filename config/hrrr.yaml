@@ -1,5 +1,5 @@
 cache_directory: '/tmp/meteo_mate/hrrr/'
-filename_format: "hrrr.t%02dz.wrfnatf%02d.grib2"
+filename_format: "hrrr.t%02dz.wrfprsf%02d.grib2"
 forecast_interval: 1
 run_interval: 1
 server_url: 'https://nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod'
